@@ -5,8 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Interview Flash Cards</title>
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 </head>
 
 <body>
@@ -82,6 +87,7 @@
                 document.getElementById('back-content').innerHTML = marked.parse(back);
                 document.getElementById('solution-content').innerHTML =
                     `<h2>Solution</h2><pre><code class="language-python">${solution}</code></pre>`;
+                hljs.highlightAll();
             } catch (error) {
                 console.error('Error loading card:', error);
             }
