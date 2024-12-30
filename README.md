@@ -1,2 +1,2 @@
 # code-interview-flash-cards
-technical coding interview flash card site
+technical coding interview leetcode flash card site

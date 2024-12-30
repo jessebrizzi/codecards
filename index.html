@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Interview Flash Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+
+<body>
+    <div class="theme-toggle">
+        <button onclick="toggleTheme()" id="theme-button">🌙</button>
+    </div>
+
+    <div class="feedback-buttons">
+        <button class="feedback-button" onclick="handleFeedback(true)">👍</button>
+        <button class="feedback-button" onclick="handleFeedback(false)">👎</button>
+    </div>
+
+    <div class="card-container">
+        <div class="card" onclick="flipCard(this)" id="flashcard">
+            <div class="card-inner">
+                <div class="card-front">
+                    <div id="front-content"></div>
+                </div>
+                <div class="card-back">
+                    <div id="back-content"></div>
+                    <div id="solution-content"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize dark mode based on system preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            document.getElementById('theme-button').textContent = '☀️';
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const button = document.getElementById('theme-button');
+            button.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        }
+
+        function flipCard(card) {
+            card.classList.toggle('flipped');
+        }
+
+        function handleFeedback(isCorrect) {
+            // Reset card flip state
+            const card = document.getElementById('flashcard');
+            card.classList.remove('flipped');
+
+            // Load next card
+            loadRandomCard();
+        }
+
+        async function loadRandomCard() {
+            try {
+                // Static list of available cards
+                const cards = [
+                    '1-two-sum',
+                    '3-longest-substring-without-repeating-characters'
+                ];
+
+                // Select random card
+                const cardPath = cards[Math.floor(Math.random() * cards.length)];
+
+                // Load card content
+                const [front, back, solution] = await Promise.all([
+                    fetch(`cards/${cardPath}/front.md`).then(r => r.text()),
+                    fetch(`cards/${cardPath}/back.md`).then(r => r.text()),
+                    fetch(`cards/${cardPath}/solution.py`).then(r => r.text())
+                ]);
+
+                // Render content
+                document.getElementById('front-content').innerHTML = marked.parse(front);
+                document.getElementById('back-content').innerHTML = marked.parse(back);
+                document.getElementById('solution-content').innerHTML =
+                    `<h2>Solution</h2><pre><code class="language-python">${solution}</code></pre>`;
+            } catch (error) {
+                console.error('Error loading card:', error);
+            }
+        }
+
+        // Load initial card
+        loadRandomCard();
+    </script>
+</body>
+
+</html>
