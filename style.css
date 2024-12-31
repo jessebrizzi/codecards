@@ -61,7 +61,7 @@ body {
 .card-container {
     width: 100%;
     max-width: 800px;
-    height: 80vh;
+    height: 70vh;
     perspective: 1000px;
     margin: 40px auto;
 }
@@ -182,7 +182,7 @@ li {
 
 .feedback-buttons {
     position: fixed;
-    bottom: 20px;
+    bottom: 10vh;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -191,25 +191,54 @@ li {
 }
 
 .feedback-button {
-    background: none;
     border: none;
     font-size: 32px;
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
-    background-color: var(--card-bg);
     box-shadow: var(--card-shadow);
+}
+
+.feedback-button.thumbs-up {
+    background-color: #4CAF50;
+}
+
+.feedback-button.thumbs-down {
+    background-color: #f44336;
 }
 
 .feedback-button:hover {
     transform: scale(1.1);
     background-color: var(--code-bg);
+}
+
+.flip-button {
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    box-shadow: var(--card-shadow);
+    background-color: #2196F3;
+    color: white;
+}
+
+.flip-button:hover {
+    transform: scale(1.1);
+    background-color: #1976D2;
 }
 
 @media (max-width: 768px) {

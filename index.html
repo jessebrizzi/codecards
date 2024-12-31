@@ -20,8 +20,9 @@
     </div>
 
     <div class="feedback-buttons">
-        <button class="feedback-button" onclick="handleFeedback(true)">👍</button>
-        <button class="feedback-button" onclick="handleFeedback(false)">👎</button>
+        <button class="feedback-button thumbs-down" onclick="handleFeedback(false)">👎</button>
+        <button class="flip-button" onclick="flipCard(document.getElementById('flashcard'))">FLIP</button>
+        <button class="feedback-button thumbs-up" onclick="handleFeedback(true)">👍</button>
     </div>
 
     <div class="card-container">
@@ -66,11 +67,10 @@
 
         async function loadRandomCard() {
             try {
-                // Static list of available cards
-                const cards = [
-                    '1-two-sum',
-                    '3-longest-substring-without-repeating-characters'
-                ];
+                // Fetch and parse the card list
+                const response = await fetch('card-list.txt');
+                const cardListText = await response.text();
+                const cards = cardListText.trim().split('\n');
 
                 // Select random card
                 const cardPath = cards[Math.floor(Math.random() * cards.length)];

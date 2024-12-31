@@ -31,9 +31,7 @@ jobs:
 
       - name: Generate card-list.txt
         run: |
-          cd cards
-          ls -d */ | cut -f1 -d'/' > ../card-list.txt
-          echo "Generated card-list.txt"
+          bin/gen-card-list
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

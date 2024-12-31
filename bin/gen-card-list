@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Navigate to the 'cards' directory
+cd cards || { echo "Directory 'cards' does not exist"; exit 1; }
+
+# List directories and save their names (without trailing slashes) to card-list.txt in the parent directory
+ls -d */ | cut -f1 -d'/' > ../card-list.txt
+
+# Print a confirmation message
+echo "Generated card-list.txt"

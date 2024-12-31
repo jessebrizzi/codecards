@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# clean up previous card list
+rm -f card-list.txt
+
+# Generate the card list
+bin/gen-card-list
+
+# start the server
+python3 -m http.server 8000
