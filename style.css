@@ -1,7 +1,7 @@
 :root {
     --bg-color: #ffffff;
-    --text-color: #333333;
-    --card-bg: #ffffff;
+    --text-color: #000000;
+    --card-bg: #bababa;
     --card-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     --code-bg: #f5f5f5;
 }
@@ -28,7 +28,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px;
     transition: background-color 0.3s ease;
 }
 
@@ -44,10 +43,7 @@ body {
     border: none;
     font-size: 24px;
     cursor: pointer;
-    padding: 8px;
     border-radius: 50%;
-    width: 40px;
-    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -71,8 +67,8 @@ body {
     height: 100%;
     position: relative;
     cursor: pointer;
-    transition: transform 0.6s;
     transform-style: preserve-3d;
+    transition: transform 0.4s;
 }
 
 .card.flipped {
@@ -103,7 +99,7 @@ body {
     transform: rotateY(180deg);
 }
 
-/* Markdown Content Styling */
+/* Markdown Content */
 h2 {
     margin-bottom: 20px;
     font-size: 1.8em;
@@ -122,54 +118,7 @@ pre {
     margin: 15px 0;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-    .card-container {
-        height: 70vh;
-        margin: 20px auto;
-    }
-
-    .card-front,
-    .card-back {
-        padding: 20px;
-    }
-
-    h2 {
-        font-size: 1.5em;
-    }
-
-    .theme-toggle {
-        top: 10px;
-        right: 10px;
-    }
-}
-
-/* Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-color);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--text-color);
-    border-radius: 4px;
-    opacity: 0.5;
-}
-
-/* Additional Markdown Elements */
-strong,
-b {
-    font-weight: 600;
-}
-
-em,
-i {
-    font-style: italic;
-}
-
+/* Lists */
 ul,
 ol {
     margin: 15px 0;
@@ -180,6 +129,17 @@ li {
     margin: 8px 0;
 }
 
+strong,
+b {
+    font-weight: 600;
+}
+
+em,
+i {
+    font-style: italic;
+}
+
+/* Feedback Buttons */
 .feedback-buttons {
     position: fixed;
     bottom: 10vh;
@@ -201,7 +161,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     box-shadow: var(--card-shadow);
 }
 
@@ -218,6 +178,7 @@ li {
     background-color: var(--code-bg);
 }
 
+/* Flip Button */
 .flip-button {
     border: none;
     font-size: 18px;
@@ -230,7 +191,7 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease;
     box-shadow: var(--card-shadow);
     background-color: #2196F3;
     color: white;
@@ -241,14 +202,86 @@ li {
     background-color: #1976D2;
 }
 
-@media (max-width: 768px) {
-    .feedback-buttons {
-        bottom: 10px;
+/* Swipe Animations */
+@keyframes swipeRight {
+    from {
+        transform: translateX(0) rotateY(var(--rotation));
     }
 
-    .feedback-button {
-        font-size: 24px;
-        width: 50px;
-        height: 50px;
+    to {
+        transform: translateX(100vw) rotateY(var(--rotation));
     }
+}
+
+@keyframes swipeLeft {
+    from {
+        transform: translateX(0) rotateY(var(--rotation));
+    }
+
+    to {
+        transform: translateX(-100vw) rotateY(var(--rotation));
+    }
+}
+
+.card {
+    --rotation: 0deg;
+}
+
+.card.flipped {
+    --rotation: 180deg;
+}
+
+.card.swipe-right {
+    animation: swipeRight 0.3s ease-out forwards;
+}
+
+.card.swipe-left {
+    animation: swipeLeft 0.3s ease-out forwards;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .card-container {
+        height: 100vh;
+        overflow: hidden;
+        margin: 0px auto;
+        padding: 40px 20px 80px 20px;
+    }
+
+    .card-front,
+    .card-back {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    .theme-toggle {
+        top: 10px;
+        right: 10px;
+    }
+
+    .feedback-buttons {
+        display: none;
+    }
+
+    .card {
+        touch-action: none;
+    }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--text-color);
+    border-radius: 4px;
+    opacity: 0.5;
 }

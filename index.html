@@ -2,31 +2,37 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Code Interview Flash Cards</title>
+    <!-- Favicon -->
     <link rel="icon"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>" />
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📇</text></svg>">
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/github-dark.min.css">
+    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
 </head>
 
 <body>
+    <!-- Theme Toggle Button -->
     <div class="theme-toggle">
-        <button onclick="toggleTheme()" id="theme-button">🌙</button>
+        <button id="theme-button" onclick="toggleTheme()">🌙</button>
     </div>
 
+    <!-- Feedback Buttons -->
     <div class="feedback-buttons">
         <button class="feedback-button thumbs-down" onclick="handleFeedback(false)">👎</button>
         <button class="flip-button" onclick="flipCard(document.getElementById('flashcard'))">FLIP</button>
         <button class="feedback-button thumbs-up" onclick="handleFeedback(true)">👍</button>
     </div>
 
+    <!-- Flashcard Container -->
     <div class="card-container">
-        <div class="card" onclick="flipCard(this)" id="flashcard">
+        <div class="card" id="flashcard" onclick="flipCard(this)">
             <div class="card-inner">
                 <div class="card-front">
                     <div id="front-content"></div>
@@ -40,49 +46,91 @@
     </div>
 
     <script>
-        // Initialize dark mode based on system preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.body.classList.add('dark-mode');
-            document.getElementById('theme-button').textContent = '☀️';
+        // Swipe handling
+        let touchStartX = 0, touchEndX = 0, isSwiping = false;
+        const SWIPE_THRESHOLD = 100;
+
+        const flashcard = document.getElementById('flashcard');
+
+        flashcard.addEventListener('touchstart', (e) => {
+            // Check if the touch started inside a code block
+            const target = e.target;
+            const isCodeBlock = target.closest('pre');
+            if (isCodeBlock) {
+                return; // Allow normal scrolling behavior in code blocks
+            }
+
+            touchStartX = e.touches[0].clientX;
+            isSwiping = false;
+        });
+
+        flashcard.addEventListener('touchmove', (e) => {
+            // If touch started in code block, don't handle swipe
+            const target = e.target;
+            const isCodeBlock = target.closest('pre');
+            if (isCodeBlock) {
+                return; // Allow normal scrolling behavior in code blocks
+            }
+
+            const deltaX = Math.abs(e.touches[0].clientX - touchStartX);
+            if (deltaX > 10) {
+                isSwiping = true;
+                e.preventDefault();
+            }
+        });
+
+        flashcard.addEventListener('touchend', (e) => {
+            // If touch started in code block, don't handle swipe
+            const target = e.target;
+            const isCodeBlock = target.closest('pre');
+            if (isCodeBlock) {
+                return; // Allow normal scrolling behavior in code blocks
+            }
+
+            touchEndX = e.changedTouches[0].clientX;
+            if (isSwiping) handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeDistance = touchEndX - touchStartX;
+            if (Math.abs(swipeDistance) >= SWIPE_THRESHOLD) {
+                const isSwipeRight = swipeDistance > 0;
+                flashcard.classList.add(isSwipeRight ? 'swipe-right' : 'swipe-left');
+                setTimeout(() => handleFeedback(isSwipeRight), 500);
+            }
         }
 
+        // Theme Toggle
         function toggleTheme() {
             document.body.classList.toggle('dark-mode');
-            const button = document.getElementById('theme-button');
-            button.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+            document.getElementById('theme-button').textContent =
+                document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
         }
 
+        // Card Flip
         function flipCard(card) {
-            card.classList.toggle('flipped');
+            if (!isSwiping) card.classList.toggle('flipped');
         }
 
+        // Feedback Handling
         function handleFeedback(isCorrect) {
-            // Reset card flip state
-            const card = document.getElementById('flashcard');
-            card.classList.remove('flipped');
-
-            // Load next card
+            flashcard.classList.remove('swipe-left', 'swipe-right', 'flipped');
             loadRandomCard();
         }
 
+        // Load a random card
         async function loadRandomCard() {
             try {
-                // Fetch and parse the card list
                 const response = await fetch('card-list.txt');
-                const cardListText = await response.text();
-                const cards = cardListText.trim().split('\n');
+                const cards = (await response.text()).trim().split('\n');
+                const randomCard = cards[Math.floor(Math.random() * cards.length)];
 
-                // Select random card
-                const cardPath = cards[Math.floor(Math.random() * cards.length)];
-
-                // Load card content
                 const [front, back, solution] = await Promise.all([
-                    fetch(`cards/${cardPath}/front.md`).then(r => r.text()),
-                    fetch(`cards/${cardPath}/back.md`).then(r => r.text()),
-                    fetch(`cards/${cardPath}/solution.py`).then(r => r.text())
+                    fetch(`cards/${randomCard}/front.md`).then(r => r.text()),
+                    fetch(`cards/${randomCard}/back.md`).then(r => r.text()),
+                    fetch(`cards/${randomCard}/solution.py`).then(r => r.text())
                 ]);
 
-                // Render content
                 document.getElementById('front-content').innerHTML = marked.parse(front);
                 document.getElementById('back-content').innerHTML = marked.parse(back);
                 document.getElementById('solution-content').innerHTML =
@@ -93,7 +141,11 @@
             }
         }
 
-        // Load initial card
+        // Initial Theme and Card Load
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.body.classList.add('dark-mode');
+            document.getElementById('theme-button').textContent = '☀️';
+        }
         loadRandomCard();
     </script>
 </body>
