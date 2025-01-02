@@ -135,14 +135,21 @@
         // Feedback Handling
         function handleFeedback(isCorrect) {
             flashcard.classList.remove('swipe-left', 'swipe-right', 'flipped');
-            loadRandomCard();
+            loadCard();
         }
 
-        // Load a random card
-        async function loadRandomCard() {
+        // Card caching
+        let nextCardData = null;
+        let cards = [];
+
+        // Pre-cache the next random card
+        async function preCacheNextCard() {
             try {
-                const response = await fetch('card-list.txt');
-                const cards = (await response.text()).trim().split('\n');
+                if (cards.length === 0) {
+                    // get list of cards
+                    const response = await fetch('card-list.txt');
+                    cards = (await response.text()).trim().split('\n');
+                }
                 const randomCard = cards[Math.floor(Math.random() * cards.length)];
 
                 const [front, back, solution] = await Promise.all([
@@ -151,11 +158,30 @@
                     fetch(`cards/${randomCard}/solution.py`).then(r => r.text())
                 ]);
 
-                document.getElementById('front-content').innerHTML = marked.parse(front);
-                document.getElementById('back-content').innerHTML = marked.parse(back);
+                nextCardData = {
+                    front: front,
+                    back: back,
+                    solution: solution
+                };
+            } catch (error) {
+                console.error('Error pre-caching next card:', error);
+            }
+        }
+
+        async function loadCard() {
+            try {
+                document.getElementById('front-content').innerHTML = marked.parse(nextCardData.front);
+                document.getElementById('back-content').innerHTML = marked.parse(nextCardData.back);
                 document.getElementById('solution-content').innerHTML =
-                    `<h2>Solution</h2><pre><code class="language-python">${solution}</code></pre>`;
+                    `<h2>Solution</h2><pre><code class="language-python">${nextCardData.solution}</code></pre>`;
                 hljs.highlightAll();
+
+                // Clear the current cached data
+                const currentCardData = nextCardData;
+                nextCardData = null;
+
+                // Pre-cache the next card
+                preCacheNextCard();
             } catch (error) {
                 console.error('Error loading card:', error);
             }
@@ -166,7 +192,8 @@
             document.body.classList.add('dark-mode');
             document.getElementById('theme-button').textContent = '☀️';
         }
-        loadRandomCard();
+        // Load first card after pre-caching it
+        preCacheNextCard().then(() => loadCard());
     </script>
 </body>
 

@@ -4,7 +4,6 @@ const ASSETS = [
     '/index.html',
     '/style.css',
     '/manifest.json',
-    '/imgs/16.png',
     '/imgs/32.png',
     '/imgs/96.png',
     '/imgs/180.png'
