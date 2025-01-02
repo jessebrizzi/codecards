@@ -163,6 +163,7 @@
             if (!isSwiping) {
                 flashcard.classList.toggle('flipped');
                 // Let CSS handle the transform for flipping
+                flashcard.style.transition = 'transform 0.3s ease-out';
                 flashcard.style.transform = flashcard.classList.contains('flipped') ? 'rotateY(180deg)' : '';
             }
         }
@@ -173,6 +174,7 @@
 
             // Reset transform properties completely
             flashcard.style.transform = '';
+            flashcard.style.transition = 'none';
             loadCard();
         }
 
