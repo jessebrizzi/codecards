@@ -68,11 +68,14 @@ body {
     position: relative;
     cursor: pointer;
     transform-style: preserve-3d;
-    transition: transform 0.4s;
+    transform-origin: center center;
+    transition: transform 0.4s ease-out;
+    --rotation: 0deg;
 }
 
 .card.flipped {
-    transform: rotateY(180deg);
+    --rotation: 180deg;
+    transform: rotateY(var(--rotation));
 }
 
 .card-inner {
@@ -80,6 +83,7 @@ body {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
+    transition: transform 0.4s ease-out;
 }
 
 .card-front,
@@ -200,43 +204,6 @@ i {
 .flip-button:hover {
     transform: scale(1.1);
     background-color: #1976D2;
-}
-
-/* Swipe Animations */
-@keyframes swipeRight {
-    from {
-        transform: translateX(0) rotateY(var(--rotation));
-    }
-
-    to {
-        transform: translateX(100vw) rotateY(var(--rotation));
-    }
-}
-
-@keyframes swipeLeft {
-    from {
-        transform: translateX(0) rotateY(var(--rotation));
-    }
-
-    to {
-        transform: translateX(-100vw) rotateY(var(--rotation));
-    }
-}
-
-.card {
-    --rotation: 0deg;
-}
-
-.card.flipped {
-    --rotation: 180deg;
-}
-
-.card.swipe-right {
-    animation: swipeRight 0.3s ease-out forwards;
-}
-
-.card.swipe-left {
-    animation: swipeLeft 0.3s ease-out forwards;
 }
 
 /* Mobile Responsiveness */
