@@ -115,8 +115,6 @@ p {
 }
 
 pre {
-    background-color: var(--code-bg);
-    padding: 15px;
     border-radius: 8px;
     overflow-x: auto;
     margin: 15px 0;
@@ -236,19 +234,4 @@ i {
     .card {
         touch-action: none;
     }
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: var(--bg-color);
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--text-color);
-    border-radius: 4px;
-    opacity: 0.5;
 }
