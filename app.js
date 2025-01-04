@@ -99,6 +99,13 @@ const uiManager = {
         elements.flashcard.classList.remove('swipe-left', 'swipe-right', 'flipped');
         elements.flashcard.style.transform = '';
         elements.flashcard.style.transition = 'none';
+
+        const front = document.querySelector('.card-front');
+        const back = document.querySelector('.card-back');
+        front.classList.remove('no-pointer-events');
+        back.classList.remove('no-pointer-events');
+        back.classList.add('no-pointer-events');
+
         cardManager.loadCard();
     }
 };
@@ -158,7 +165,6 @@ const touchManager = {
                 } else {
                     elements.flashcard.style.transform = `translateX(${endPosition}px)`;
                 }
-
                 setTimeout(() => uiManager.handleFeedback(isSwipeRight), CONFIG.FEEDBACK_DELAY);
             } else {
                 // Return to center while preserving flip state
