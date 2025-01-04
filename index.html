@@ -161,10 +161,22 @@
         // Card Flip
         function flipCard() {
             if (!isSwiping) {
+                const front = document.querySelector('.card-front');
+                const back = document.querySelector('.card-back');
+
                 flashcard.classList.toggle('flipped');
                 // Let CSS handle the transform for flipping
                 flashcard.style.transition = 'transform 0.3s ease-out';
                 flashcard.style.transform = flashcard.classList.contains('flipped') ? 'rotateY(180deg)' : '';
+
+                // Handle pointer events
+                if (flashcard.classList.contains('flipped')) {
+                    front.classList.add('no-pointer-events');
+                    back.classList.remove('no-pointer-events');
+                } else {
+                    back.classList.add('no-pointer-events');
+                    front.classList.remove('no-pointer-events');
+                }
             }
         }
 
