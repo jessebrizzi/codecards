@@ -1,0 +1,14 @@
+{
+    "difficulty": "easy",
+    "patterns": [
+        "arrays and hash tables"
+    ],
+    "tags": [
+        "array",
+        "hash table"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

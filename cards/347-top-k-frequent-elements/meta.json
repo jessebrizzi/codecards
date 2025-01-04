@@ -1,0 +1,20 @@
+{
+    "difficulty": "medium",
+    "patterns": [
+        "arrays and hash tables"
+    ],
+    "tags": [
+        "array",
+        "hash table",
+        "divide and conquer",
+        "sorting",
+        "heap",
+        "bucket sort",
+        "counting",
+        "quick select"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

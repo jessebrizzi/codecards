@@ -1,0 +1,15 @@
+{
+    "difficulty": "medium",
+    "name": "Product of Array Except Self",
+    "patterns": [
+        "arrays and hash tables"
+    ],
+    "tags": [
+        "array",
+        "prefix sum"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

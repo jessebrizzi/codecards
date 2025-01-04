@@ -1,0 +1,16 @@
+{
+    "difficulty": "medium",
+    "name": "Longest Consecutive Sequence",
+    "patterns": [
+        "arrays and hash tables"
+    ],
+    "tags": [
+        "array",
+        "hash table",
+        "union find"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

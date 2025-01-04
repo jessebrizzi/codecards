@@ -1,0 +1,15 @@
+{
+    "difficulty": "medium",
+    "patterns": [
+        "sliding window"
+    ],
+    "tags": [
+        "hash table",
+        "string",
+        "sliding window"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

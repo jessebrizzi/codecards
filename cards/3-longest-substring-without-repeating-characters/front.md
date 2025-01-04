@@ -1,27 +1,25 @@
-## Question
+## Problem
 
-Given a string, find the length of the **longest substring** without repeating characters.
+Find the length of the longest substring without repeating characters.
 
 **Example 1:**
-
 ```
-Input: "abcabcbb"
-Output: 3 
-Explanation: The answer is "abc", with the length of 3.
+Input: "xyzabcxy"
+Output: 6 
+Explanation: The answer is "xyzabc", with the length of 6.
 ```
 
 **Example 2:**
-
 ```
-Input: "bbbbb"
+Input: "xxxxx"
 Output: 1
-Explanation: The answer is "b", with the length of 1.
+Explanation: The answer is "x", with the length of 1.
 ```
 
 **Example 3:**
 ```
-Input: "pwwkew"
+Input: "abbcdb"
 Output: 3
-Explanation: The answer is "wke", with the length of 3. 
-             Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
+Explanation: The answer is "bcd", with the length of 3. 
+             Note that the answer must be a substring, "abcd" is a subsequence and not a substring.
 ```
