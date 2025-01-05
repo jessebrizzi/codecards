@@ -1,5 +1,5 @@
 class Solution:
-    def topKFrequent(self, nums: list[int], k: int) -> List[int]:
+    def topKFrequent(self, nums: list[int], k: int) -> list[int]:
         d = {}
         for n in nums:
             if n in d:

@@ -1,5 +1,5 @@
 class Solution:
-    def productExceptSelf(self, nums: list[int]) -> List[int]:
+    def productExceptSelf(self, nums: list[int]) -> list[int]:
         l = [1]
         for n in nums:
             l.append(n * l[-1])
