@@ -1,7 +1,7 @@
 {
     "difficulty": "medium",
     "name": "Longest Consecutive Sequence",
-    "patterns": [
+    "pattern": [
         "arrays and hash tables"
     ],
     "tags": [

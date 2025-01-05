@@ -1,7 +1,7 @@
 {
     "difficulty": "easy",
     "name": "Best Time to Buy and Sell Stock",
-    "patterns": [
+    "pattern": [
         "sliding window"
     ],
     "tags": [

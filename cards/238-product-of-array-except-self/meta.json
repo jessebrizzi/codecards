@@ -1,7 +1,7 @@
 {
     "difficulty": "medium",
     "name": "Product of Array Except Self",
-    "patterns": [
+    "pattern": [
         "arrays and hash tables"
     ],
     "tags": [

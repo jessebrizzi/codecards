@@ -1,7 +1,7 @@
 {
     "difficulty": "easy",
     "name": "Valid Anagram",
-    "patterns": [
+    "pattern": [
         "arrays and hash tables"
     ],
     "tags": [

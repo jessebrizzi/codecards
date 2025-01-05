@@ -53,11 +53,17 @@ const cardManager = {
     async loadCard() {
         try {
             elements.frontContent.innerHTML = `
-                <div class="card-title">${state.nextCardData.meta.name}</div>
+                <div class="card-title">
+                    <div class="card-name">${state.nextCardData.meta.name}</div>
+                    <div class="card-difficulty">Difficulty: ${state.nextCardData.meta.difficulty}</div>
+                </div>
                 ${marked.parse(state.nextCardData.front)}
             `;
             elements.backContent.innerHTML = `
-                <div class="card-title">${state.nextCardData.meta.name}</div>
+                <div class="card-title">
+                    <div class="card-name">${state.nextCardData.meta.name}</div>
+                    <div class="card-pattern">Pattern: ${state.nextCardData.meta.pattern}</div>
+                </div>
                 ${marked.parse(state.nextCardData.back)}
             `;
             elements.solutionContent.innerHTML =

@@ -1,7 +1,7 @@
 {
     "difficulty": "medium",
     "name": "3Sum",
-    "patterns": [
+    "pattern": [
         "two pointers"
     ],
     "tags": [

@@ -1,7 +1,7 @@
 {
     "difficulty": "hard",
     "name": "Minimum Window Substring",
-    "patterns": [
+    "pattern": [
         "sliding window"
     ],
     "tags": [

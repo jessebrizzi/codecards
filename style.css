@@ -110,12 +110,23 @@ body {
 
 /* Card Title */
 .card-title {
-    font-size: 1em;
-    font-weight: 600;
     margin-bottom: 10px;
     padding-bottom: 5px;
     border-bottom: 2px solid var(--text-color);
     text-align: center;
+}
+
+.card-name {
+    font-size: 1em;
+    font-weight: 600;
+}
+
+.card-difficulty,
+.card-pattern {
+    font-size: 0.8em;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-top: 5px;
 }
 
 /* Markdown Content */

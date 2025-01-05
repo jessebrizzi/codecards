@@ -1,7 +1,7 @@
 {
     "difficulty": "medium",
     "name": "Container With Most Water",
-    "patterns": [
+    "pattern": [
         "two pointers"
     ],
     "tags": [

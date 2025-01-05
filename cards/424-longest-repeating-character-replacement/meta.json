@@ -1,7 +1,7 @@
 {
     "difficulty": "medium",
     "name": "Longest Repeating Character Replacement",
-    "patterns": [
+    "pattern": [
         "sliding window"
     ],
     "tags": [

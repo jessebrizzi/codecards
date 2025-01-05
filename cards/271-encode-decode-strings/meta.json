@@ -1,7 +1,7 @@
 {
     "difficulty": "medium",
     "name": "Encode and Decode Strings",
-    "patterns": [
+    "pattern": [
         "arrays and hash tables"
     ],
     "tags": [
