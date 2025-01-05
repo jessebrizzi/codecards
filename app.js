@@ -62,6 +62,20 @@ const cardManager = {
             `;
             elements.solutionContent.innerHTML =
                 `<h2>Solution</h2><pre><code class="language-python">${state.nextCardData.solution}</code></pre>`;
+
+            // Generate ChatGPT explanation link
+            const prompt =
+                'Explain the problem "' + state.nextCardData.meta.name + '" technical coding interview question in detail. ' +
+                'Break down the solution approach and explain how this Python code works:\n\n' +
+                '```python\n' +
+                state.nextCardData.solution + '\n' +
+                '```\n\n' +
+                'Provide additional examples and explain any technical terms. ' +
+                'Use simple language and include diagrams if helpful.';
+            const encodedPrompt = encodeURIComponent(prompt);
+            const chatGPTLink = `https://chat.openai.com/?model=gpt-4&q=${encodedPrompt}`;
+            document.getElementById('chatgpt-link').href = chatGPTLink;
+
             hljs.highlightAll();
 
             state.nextCardData = null;

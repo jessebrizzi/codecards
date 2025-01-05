@@ -219,6 +219,26 @@ i {
     background-color: #1976D2;
 }
 
+.chatgpt-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.chatgpt-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0d1117;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.chatgpt-button:hover {
+    background-color: #0d8266;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
     .card-container {
@@ -244,5 +264,10 @@ i {
 
     .card {
         touch-action: none;
+    }
+
+    .chatgpt-button {
+        padding: 8px 16px;
+        font-size: 14px;
     }
 }
