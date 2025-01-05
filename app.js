@@ -37,13 +37,14 @@ const cardManager = {
             }
             const randomCard = state.cards[Math.floor(Math.random() * state.cards.length)];
 
-            const [front, back, solution] = await Promise.all([
+            const [front, back, solution, meta] = await Promise.all([
                 fetch(`cards/${randomCard}/front.md`).then(r => r.text()),
                 fetch(`cards/${randomCard}/back.md`).then(r => r.text()),
-                fetch(`cards/${randomCard}/solution.py`).then(r => r.text())
+                fetch(`cards/${randomCard}/solution.py`).then(r => r.text()),
+                fetch(`cards/${randomCard}/meta.json`).then(r => r.json())
             ]);
 
-            state.nextCardData = { front, back, solution };
+            state.nextCardData = { front, back, solution, meta };
         } catch (error) {
             console.error('Error pre-caching next card:', error);
         }
@@ -51,8 +52,14 @@ const cardManager = {
 
     async loadCard() {
         try {
-            elements.frontContent.innerHTML = marked.parse(state.nextCardData.front);
-            elements.backContent.innerHTML = marked.parse(state.nextCardData.back);
+            elements.frontContent.innerHTML = `
+                <div class="card-title">${state.nextCardData.meta.name}</div>
+                ${marked.parse(state.nextCardData.front)}
+            `;
+            elements.backContent.innerHTML = `
+                <div class="card-title">${state.nextCardData.meta.name}</div>
+                ${marked.parse(state.nextCardData.back)}
+            `;
             elements.solutionContent.innerHTML =
                 `<h2>Solution</h2><pre><code class="language-python">${state.nextCardData.solution}</code></pre>`;
             hljs.highlightAll();
