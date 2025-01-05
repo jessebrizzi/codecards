@@ -1,5 +1,6 @@
 {
     "difficulty": "medium",
+    "name": "Top K Frequent Elements",
     "patterns": [
         "arrays and hash tables"
     ],

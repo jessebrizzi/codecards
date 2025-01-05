@@ -1,13 +1,13 @@
 {
-    "difficulty": "easy",
-    "name": "Valid Anagram",
+    "difficulty": "medium",
+    "name": "Longest Repeating Character Replacement",
     "patterns": [
-        "arrays and hash tables"
+        "sliding window"
     ],
     "tags": [
         "hash table",
         "string",
-        "sorting"
+        "sliding window"
     ],
     "lists": [
         "blind_75",

@@ -1,5 +1,6 @@
 {
     "difficulty": "easy",
+    "name": "Contains Duplicate",
     "patterns": [
         "arrays and hash tables"
     ],

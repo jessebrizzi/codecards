@@ -1,13 +1,12 @@
 {
     "difficulty": "easy",
-    "name": "Valid Anagram",
+    "name": "Best Time to Buy and Sell Stock",
     "patterns": [
-        "arrays and hash tables"
+        "sliding window"
     ],
     "tags": [
-        "hash table",
-        "string",
-        "sorting"
+        "array",
+        "dynamic programming"
     ],
     "lists": [
         "blind_75",

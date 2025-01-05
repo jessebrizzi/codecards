@@ -3,7 +3,7 @@
 Given an array of numbers, create a new array where each element is the product of all numbers in the original array except the number at that index.
 
 **Example:**
-```
+```text
 Input: [3, 5, 2, 4]
 Output: [40, 24, 60, 30]
 Explanation:

@@ -1,13 +1,12 @@
 {
     "difficulty": "easy",
-    "name": "Valid Anagram",
+    "name": "Valid Palindrome",
     "patterns": [
-        "arrays and hash tables"
+        "two pointers"
     ],
     "tags": [
-        "hash table",
-        "string",
-        "sorting"
+        "two pointers",
+        "string"
     ],
     "lists": [
         "blind_75",

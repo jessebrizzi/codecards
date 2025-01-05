@@ -1,5 +1,6 @@
 {
     "difficulty": "easy",
+    "name": "Two Sum",
     "patterns": [
         "arrays and hash tables"
     ],

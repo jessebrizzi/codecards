@@ -3,13 +3,13 @@
 Determine if two strings are anagrams of each other.
 
 **Example 1:**
-```
+```text
 Input: "listen", "silent"
 Output: true
 ```
 
 **Example 2:**
-```
+```text
 Input: "apple", "papers"
 Output: false
 ```

@@ -1,13 +1,13 @@
 {
-    "difficulty": "easy",
-    "name": "Valid Anagram",
+    "difficulty": "hard",
+    "name": "Minimum Window Substring",
     "patterns": [
-        "arrays and hash tables"
+        "sliding window"
     ],
     "tags": [
         "hash table",
         "string",
-        "sorting"
+        "sliding window"
     ],
     "lists": [
         "blind_75",

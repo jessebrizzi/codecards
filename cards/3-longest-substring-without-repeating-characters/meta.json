@@ -1,5 +1,6 @@
 {
     "difficulty": "medium",
+    "name": "Longest Substring Without Repeating Characters",
     "patterns": [
         "sliding window"
     ],

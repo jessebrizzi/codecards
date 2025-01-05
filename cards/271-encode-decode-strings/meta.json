@@ -1,5 +1,6 @@
 {
     "difficulty": "medium",
+    "name": "Encode and Decode Strings",
     "patterns": [
         "arrays and hash tables"
     ],

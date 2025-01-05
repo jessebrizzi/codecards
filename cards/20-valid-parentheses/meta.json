@@ -1,13 +1,12 @@
 {
     "difficulty": "easy",
-    "name": "Valid Anagram",
+    "name": "Valid Parentheses",
     "patterns": [
-        "arrays and hash tables"
+        "stack"
     ],
     "tags": [
-        "hash table",
         "string",
-        "sorting"
+        "stack"
     ],
     "lists": [
         "blind_75",

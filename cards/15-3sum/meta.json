@@ -1,14 +1,13 @@
 {
     "difficulty": "medium",
-    "name": "Group Anagrams",
+    "name": "3Sum",
     "patterns": [
-        "arrays and hash tables"
+        "two pointers"
     ],
     "tags": [
         "array",
-        "hash table",
-        "string",
-        "sorting"
+        "two pointers",
+        "greedy"
     ],
     "lists": [
         "blind_75",

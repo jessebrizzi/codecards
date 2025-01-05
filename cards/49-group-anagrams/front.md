@@ -3,7 +3,7 @@
 Group strings that are anagrams of each other.
 
 **Example:**
-```
+```text
 Input: ["art", "rat", "tar", "star", "rats", "tars"]
 Output:
 [

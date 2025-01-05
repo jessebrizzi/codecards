@@ -1,13 +1,12 @@
 {
     "difficulty": "medium",
-    "name": "Group Anagrams",
+    "name": "Container With Most Water",
     "patterns": [
-        "arrays and hash tables"
+        "two pointers"
     ],
     "tags": [
         "array",
-        "hash table",
-        "string",
+        "two pointers",
         "sorting"
     ],
     "lists": [
