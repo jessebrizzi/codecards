@@ -1,0 +1,17 @@
+{
+    "difficulty": "medium",
+    "name": "Word Search",
+    "pattern": [
+        "backtracking"
+    ],
+    "tags": [
+        "array",
+        "sorting",
+        "backtracking",
+        "matrix"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

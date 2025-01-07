@@ -1,0 +1,15 @@
+{
+    "difficulty": "medium",
+    "name": "Search in Rotated Sorted Array",
+    "pattern": [
+        "binary search"
+    ],
+    "tags": [
+        "array",
+        "binary search"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

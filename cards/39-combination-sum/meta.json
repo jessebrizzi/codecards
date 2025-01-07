@@ -1,0 +1,15 @@
+{
+    "difficulty": "medium",
+    "name": "Combination Sum",
+    "pattern": [
+        "backtracking"
+    ],
+    "tags": [
+        "array",
+        "backtracking"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}

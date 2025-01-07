@@ -1,0 +1,18 @@
+{
+    "difficulty": "hard",
+    "name": "Find Median in Data Stream",
+    "pattern": [
+        "heap"
+    ],
+    "tags": [
+        "two pointers",
+        "design",
+        "sorting",
+        "heap",
+        "data stream"
+    ],
+    "lists": [
+        "blind_75",
+        "neetcode_150"
+    ]
+}
